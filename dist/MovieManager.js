@@ -66,7 +66,7 @@ async getMovie(movie) {
     Data.push(MovieObject)
     // console.log(Data)
 
-
+ 
 }
 
 saveMovie(movieName) {
