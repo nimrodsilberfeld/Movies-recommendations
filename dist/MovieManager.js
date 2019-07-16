@@ -5,7 +5,7 @@ class MovieManager {
 
     async getDataFromDB() {
         let mv = this.movieData
-        let response = await $.get('http://localhost:3000/')
+        let response = await $.get('http://localhost:3000/movies')
         if (response) {
             for (let i of response) {
                 mv.push(i)
@@ -15,11 +15,21 @@ class MovieManager {
         return
     }
 
+
+    // const UserSchema = new Schema({
+    //     name: String,
+    //     password: Date,
+    //     apiKey: Number,
+    //     movies: [],
+    // })
+
     async getTranding(tranding) {
-        let data = await $.get(`http://localhost:3000/movies/${tranding}`)
-        data = JSON.parsh(data)
+        let data = await $.get(`http://localhost:3000/user/${tranding}`)
+        data = JSON.parse(data)
+
         let MovieObject = {
-            tranding
+            name:data.title,
+            img:data.poster_path
 
         }
         this.movieData.push(MovieObject)
@@ -31,7 +41,7 @@ class MovieManager {
         $.post("/movie/", movies)
     }
 
-    
+
 
 
 
