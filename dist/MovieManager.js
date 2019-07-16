@@ -46,14 +46,19 @@ async getMovie(movie) {
     Data.push(MovieObject)
     // console.log(Data)
 
-
+ 
 }
 
-saveMovie(movieName) {
-    const movies = this.movieData.find(mv => mv.name === movieName)
-    $.post("/movie/", movies)
+saveUser(user) {
+    $.post(`/user/${user}`, {name: user, movies:[]}, function(data, status){
+         
+    })
 }
 
+
+saveMovie(movies){
+    
+}
 
 
 

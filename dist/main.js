@@ -19,3 +19,14 @@ $('.search').on('click', async function () {
     console.log(m)
 
 })
+
+ $('.login').on('click', function(){
+    const login = $('.user').val()
+    movieManager.saveUser(login)
+})
+
+$('body').on('click', '.like', function () {
+    let movieName = $(this).siblings('.name').text()
+    let movieImg = $(this).siblings('.img').text()
+    movieManager.saveMovie()
+})
