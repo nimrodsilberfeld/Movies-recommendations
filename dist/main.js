@@ -11,7 +11,14 @@ $('.login').on('click', function(){
     const user = $('.user').val()
     const pass = $('.password').val()
     $.get(`user/${user}`, function(data, status){
+        loadPage()
         console.log(data)
         console.log(status)
+
     })
+
+})
+
+$('.search').on('click', function(){
+
 })

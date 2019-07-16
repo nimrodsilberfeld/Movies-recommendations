@@ -5,7 +5,7 @@ class MovieManager {
 
     async getDataFromDB() {
         let mv = this.movieData
-        let response = await $.get('http://localhost:3000/movies')
+        let response = await $.get('http://localhost:3000/')
         if (response) {
             for (let i of response) {
                 mv.push(i)
@@ -31,7 +31,7 @@ class MovieManager {
         $.post("/movie/", movies)
     }
 
-    getSearch(movie)
+    
 
 
 
