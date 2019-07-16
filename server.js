@@ -6,6 +6,7 @@ app.use( bodyParser.json() )
 app.use( bodyParser.urlencoded( { extended: false } ) )
 app.use( express.static( path.join( __dirname, 'dist' ) ) )
 const api = require( './api' )
+
 app.use( '/', api )
 
 

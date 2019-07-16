@@ -5,7 +5,7 @@ class MovieManager {
 
     async getDataFromDB() {
         let mv = this.movieData
-        let response = await $.get('http://localhost:3000/')
+        let response = await $.get('http://localhost:3000/movies')
         if (response) {
             for (let i of response) {
                 mv.push(i)
@@ -16,8 +16,8 @@ class MovieManager {
     }
 
     async getTranding(tranding) {
-        let data = await $.get(`http://localhost:3000/city/${tranding}`)
-        data = JSON.parsh(data)
+        let data = await $.get(`http://localhost:3000/user/${tranding}`)
+        data = JSON.parse(data)
         let MovieObject = {
             tranding
 

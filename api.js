@@ -7,7 +7,7 @@ const request=require('request')
 const key='f879f4132d8f332d5be23dee1d085d9f'
 const namekey='b6c343c7'
 
-router.get('/',function(req,res){
+router.get('/movies',function(req,res){
     request(`https://api.themoviedb.org/3/trending/all/day?api_key=${key}`,function(err,r,body){
         const data=JSON.parse(body)
         res.send(data)
