@@ -3,12 +3,17 @@ class MovieManager {
         this.movieData = []
     }
 
-    async getDataFromDB() {
+    async getTrending() {
         let mv = this.movieData
-        let response = await $.get('http://localhost:3000/movies')
+        let response = await $.get('http://localhost:3000/movies', function (req, res) {
+            return res
+        })
+        console.log(response)
         if (response) {
-            for (let i of response) {
-                mv.push(i)
+            for (let i in response) {
+                for (let a of i.results) {
+                    console.log(a)
+                }
             }
         }
 
@@ -23,16 +28,18 @@ class MovieManager {
     //     movies: [],
     // })
 
-    async getTranding(tranding) {
-        let data = await $.get(`http://localhost:3000/user/${tranding}`)
-        data = JSON.parse(data)
+    async getMovie(movie) {
+        let Data = this.movieData
+        let data = await $.get(`http://localhost:3000/movies/${movie}`)
 
         let MovieObject = {
-            name:data.title,
-            img:data.poster_path
+            name: data.Title,
+            img: data.Poster
 
         }
-        this.movieData.push(MovieObject)
+        Data.push(MovieObject)
+        console.log(Data)
+
 
     }
 

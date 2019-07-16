@@ -26,7 +26,7 @@ router.get('/movies',function(req,res){
    // })
 //})
 
-router.get('/user/:moviename',function(req,res){
+router.get('/movies/:moviename',function(req,res){
     let name=req.params.moviename
     request(`http://www.omdbapi.com/?apikey=${namekey}&t=${name}`,function(err,r,Body){
         const imdb=JSON.parse(Body)
@@ -35,7 +35,7 @@ res.send(imdb)
 })
 
 
-router.get('/user/:imdbid',function(req,res){
+router.get('/movies/:imdbid',function(req,res){
    let imdbid=req.params.imdbid
       
         request(`https://api.themoviedb.org/3/find/${imdbid}?api_key=${key}&language=en-US&external_source=imdb_id`,function(err,r,body){
