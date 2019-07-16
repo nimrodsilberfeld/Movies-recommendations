@@ -16,7 +16,7 @@ class MovieManager {
     }
 
     async getTranding(tranding) {
-        let data = await $.get(`http://localhost:3000/city/${tranding}`)
+        let data = await $.get(`http://localhost:3000/movies/${tranding}`)
         data = JSON.parsh(data)
         let MovieObject = {
             tranding
@@ -31,7 +31,7 @@ class MovieManager {
         $.post("/movie/", movies)
     }
 
-    getSearch(movie)
+    
 
 
 
