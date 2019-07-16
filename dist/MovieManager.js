@@ -5,16 +5,22 @@ class MovieManager {
     }
 
     async getTrending() {
+
         let mv = this.trendingMovies
+
+       let mv = this.movieData
+
         let response = await $.get('http://localhost:3000/movies', function (req, res) {
             return res
         })
         console.log(response)
         if (response) {
+
             for (let r in response) {
                 for (let a of r){
                     mv.push(a)
                     console.log(mv)
+
                 }
             }
         }
@@ -31,6 +37,7 @@ class MovieManager {
     // })
 
     async getMovie(movie) {
+
         let data = await $.get(`http://localhost:3000/movies/${movie}`)
 
 
@@ -39,7 +46,9 @@ class MovieManager {
             img: data.Poster
 
         }
-        this.movieData.push(MovieObject)
+        Data.push(MovieObject)
+        console.log(Data)
+
 
     }
 

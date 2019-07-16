@@ -1,5 +1,5 @@
 const movieManager = new MovieManager
-const rednerer = new Renderer
+const renderer = new Renderer
 
 const loadPage = async function () {
     await movieManager.getTrending()
@@ -11,6 +11,7 @@ loadPage()
 
 $('.search').on('click', async function(){
     const movie = $('.movieName').val()
+
     await movieManager.getMovie(movie)
     const m = movieManager.movieData
     console.log(m)
