@@ -9,6 +9,7 @@ const UserSchema = new Schema({
     password: Date,
     apiKey: Number,
     movies: [],
+    recommendedMovies: []
 })
 
 
