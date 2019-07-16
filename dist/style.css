@@ -20,3 +20,8 @@ margin-left: 1213px;
     grid-template-rows: 1fr;
     grid-template-columns: 1fr 
 }
+.image{
+    border: 1px solid #999;
+	background-color: #503503;
+	padding: 4px;
+}
