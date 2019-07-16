@@ -1,4 +1,4 @@
-const movieManager = new movieManager
+const movieManager = new MovieManager
 const rednerer = new Renderer
 
 const loadPage = async function () {
