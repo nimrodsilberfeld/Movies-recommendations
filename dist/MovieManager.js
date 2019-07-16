@@ -15,30 +15,12 @@ class MovieManager {
         })
         const res2=response.results
         for(let a of res2){
-            mv.push({name: a.title, img: a.poster_path})
+            mv.push( {name: a.title, img: `https://image.tmdb.org/t/p/w300${a.poster_path}`} )
             
         }
-    console.log(mv.slice(0,3))
-        // console.log(res2[3].title)
-        // for(let i in response){
-        //     console.log(i)
-        // }
-        // // if (response) {
-        //     for (let i of response) {
-        //         mv.push(i)
-        //         console.log(mv)
-        //     }
-        // }
-        // if (response) {
-
-        // for (let r in response) {
-
-
-
-        //         mv.push(r)
-        //         console.log(mv)
-
-
+        
+        console.log(mv.slice(0,3))
+     
     }
 
 
@@ -46,12 +28,10 @@ class MovieManager {
 
 
 
-// const UserSchema = new Schema({
-//     name: String,
-//     password: Date,
-//     apiKey: Number,
-//     movies: [],
-// })
+
+        
+        
+        
 
 async getMovie(movie) {
     let Data = this.movieData
