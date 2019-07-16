@@ -4,6 +4,7 @@ const mongoose = require('mongoose')
 const router = express.Router()
 const request = require('request')
 const User = require('./modules/User')
+const sort=require('./modules/Recommend')
 
 const key = 'f879f4132d8f332d5be23dee1d085d9f'
 const namekey = 'b6c343c7'
@@ -35,9 +36,9 @@ router.get('/movies/:moviename', function (req, res) {
 })
 
 
-router.get('/movies/:imdbid', function (req, res) {
+router.put('/movies/:imdbid', function (req, res) {
     let imdbid = req.params.imdbid
-
+let user=req.body
     request(`https://api.themoviedb.org/3/find/${imdbid}?api_key=${key}&language=en-US&external_source=imdb_id`, function (err, r, body) {
         const data = JSON.parse(body)
         const id = data.movie_results[0].id
@@ -45,6 +46,13 @@ router.get('/movies/:imdbid', function (req, res) {
         request(`https://api.themoviedb.org/3/movie/${id}/similar?api_key=${key}&language=en-US&page=1`, function (err, r, body) {
             const movies = JSON.parse(body)
             res.send(movies)
+            User.findOne({name:user.name},function(err,d){
+            let list=  sort(d.movies,d.recommendedMovies)
+            
+            User.update({name:data.name},{$set:{recommendedMovies:list}},function(err,x){
+                res.send(list)
+            })
+            })
         })
     })
 })

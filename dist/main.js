@@ -3,17 +3,18 @@ const renderer = new Renderer
 
 const loadPage = async function () {
     await movieManager.getTrending()
-    const r = movieManager.movieData
+    const r = movieManager.trendingMovies
     console.log(r)
 }
 
 loadPage()
 
-$('.search').on('click', async function(){
+$('.search').on('click', async function(){ 
+    
+    let m = movieManager.movieData
     const movie = $('.movieName').val()
-
     await movieManager.getMovie(movie)
-    const m = movieManager.movieData
+    await renderer.renderData(m)
     console.log(m)
 
 })

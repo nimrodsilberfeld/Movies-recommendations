@@ -18,7 +18,7 @@ class MovieManager {
             mv.push({name: a.title, img: a.poster_path})
             
         }
-        console.log(mv.slice(0,3))
+    console.log(mv.slice(0,3))
         // console.log(res2[3].title)
         // for(let i in response){
         //     console.log(i)
