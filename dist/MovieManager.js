@@ -8,7 +8,7 @@ class MovieManager {
 
         let mv = this.trendingMovies
 
-       let mv = this.movieData
+
 
         let response = await $.get('http://localhost:3000/movies', function (req, res) {
             return res
@@ -17,7 +17,7 @@ class MovieManager {
         if (response) {
 
             for (let r in response) {
-                for (let a of r){
+                for (let a of r) {
                     mv.push(a)
                     console.log(mv)
 
@@ -37,7 +37,7 @@ class MovieManager {
     // })
 
     async getMovie(movie) {
-
+        let Data = this.movieData
         let data = await $.get(`http://localhost:3000/movies/${movie}`)
 
 
