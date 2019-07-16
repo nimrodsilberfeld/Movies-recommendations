@@ -6,8 +6,8 @@ mongoose.connect( 'mongodb://localhost:27017/UserDB', { useNewUrlParser: true } 
 
 const UserSchema = new Schema({
     name: String,
-    password: Date,
-    apiKey: Number,
+    password: String,
+    apiKey: String,
     movies: [],
     recommendedMovies: []
 })
