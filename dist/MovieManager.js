@@ -17,7 +17,7 @@ class MovieManager {
 
     async getTranding(tranding) {
         let data = await $.get(`http://localhost:3000/city/${tranding}`)
-        data = JSON.parsh(data)
+        data = JSON.parse(data)
         let MovieObject = {
             tranding
 
