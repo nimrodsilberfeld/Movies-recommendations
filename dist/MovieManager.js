@@ -1,23 +1,31 @@
 class MovieManager {
     constructor() {
+        this.trendingMovies = []
         this.movieData = []
     }
 
     async getTrending() {
-        let mv = this.movieData
+
+        let mv = this.trendingMovies
+
+       let mv = this.movieData
+
         let response = await $.get('http://localhost:3000/movies', function (req, res) {
             return res
         })
         console.log(response)
         if (response) {
-            for (let i in response) {
-                for (let a of i.results) {
-                    console.log(a)
+
+            for (let r in response) {
+                for (let a of r){
+                    mv.push(a)
+                    console.log(mv)
+
                 }
             }
         }
 
-        return
+
     }
 
 
@@ -29,8 +37,9 @@ class MovieManager {
     // })
 
     async getMovie(movie) {
-        let Data = this.movieData
+
         let data = await $.get(`http://localhost:3000/movies/${movie}`)
+
 
         let MovieObject = {
             name: data.Title,
