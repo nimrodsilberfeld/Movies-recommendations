@@ -4,5 +4,8 @@ class Renderer {
     }
     renderData(){
         $('#container').empty()
+        const source = $("#template").html()
+        
+        $('#container').append(newHTML)
     }
 }
