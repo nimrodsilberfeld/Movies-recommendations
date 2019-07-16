@@ -17,16 +17,29 @@
         <button class="search">Search</button>
         <input class="user" type="text" placeholder="Username">
         <br><br>
-        <input class= "password" type="password" placeholder="Password">
+        <input class="password" type="password" placeholder="Password">
         <br>
-        <button class= "login">Login</button>
-    <div id= "container">
-
-
-
-
-        
+        <button class="login">Login</button>
     </div>
+    <script id='template' type='text/x-handlebars-template'>
+            {{#each data}}
+            <div class= 'searchMovie'>
+                <h2 class='name'>{{name}}</h2>
+                <img class="image" src="{{img}}">
+                <button class= 'save'>Save</button>
+                <button class= 'remove'>Remove</button>
+            </div>
+            {{/each}}
+             </script>
+
+    <div id="container">
+
+
+
+
+
+    </div>
+
     <script src="https://code.jquery.com/jquery-3.4.1.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/handlebars.js/4.1.2/handlebars.js"></script>
     <script src="MovieManager.js"></script>
