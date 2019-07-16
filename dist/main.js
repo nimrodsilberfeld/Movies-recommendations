@@ -7,18 +7,11 @@ const loadPage = async function () {
     await rednerer.renderData(r)
 }
 
-$('.login').on('click', function () {
-    const user = $('.user').val()
-    const pass = $('.password').val()
-    $.get(`user/${user}`, function (data, status) {
-        loadPage()
-        console.log(data)
-        console.log(status)
 
-    })
-
-})
-
-$('.search').on('click', function () {
+$('.search').on('click', async function(){
+    const movie = $('.movieName').val()
+    await movieManager.getTranding(movie)
+    const m = movieManager.movieData
+    console.log(m)
 
 })
