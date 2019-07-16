@@ -9,9 +9,10 @@ const loadPage = async function () {
 
 loadPage()
 
-$('.search').on('click', async function(){ 
-    
+$('.search').on('click', async function () {
+
     let m = movieManager.movieData
+    m.splice(0, 1)
     const movie = $('.movieName').val()
     await movieManager.getMovie(movie)
     await renderer.renderData(m)
