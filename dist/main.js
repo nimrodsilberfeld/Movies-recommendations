@@ -11,6 +11,7 @@ loadPage()
 
 $('.search').on('click', async function(){ 
     
+    let m = movieManager.movieData
     const movie = $('.movieName').val()
     await movieManager.getMovie(movie)
     await renderer.renderData(m)
