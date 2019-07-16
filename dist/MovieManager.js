@@ -52,6 +52,9 @@ class MovieManager {
 //     apiKey: Number,
 //     movies: [],
 // })
+        }
+        Data.push(MovieObject)
+        
 
 async getMovie(movie) {
     let Data = this.movieData
