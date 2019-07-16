@@ -14,3 +14,9 @@ margin-left: 1213px;
 .login{
     margin-left: 1305px;
 }
+
+.con {
+    display: grid;
+    grid-template-rows: 1fr;
+    grid-template-columns: 1fr 
+}

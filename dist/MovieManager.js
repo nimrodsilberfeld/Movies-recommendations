@@ -15,11 +15,21 @@ class MovieManager {
         return
     }
 
+
+    // const UserSchema = new Schema({
+    //     name: String,
+    //     password: Date,
+    //     apiKey: Number,
+    //     movies: [],
+    // })
+
     async getTranding(tranding) {
         let data = await $.get(`http://localhost:3000/user/${tranding}`)
         data = JSON.parse(data)
+
         let MovieObject = {
-            tranding
+            name:data.title,
+            img:data.poster_path
 
         }
         this.movieData.push(MovieObject)
@@ -31,7 +41,7 @@ class MovieManager {
         $.post("/movie/", movies)
     }
 
-    
+
 
 
 
