@@ -47,7 +47,7 @@ class MovieManager {
 
         }
         Data.push(MovieObject)
-        console.log(Data)
+        
 
 
     }
