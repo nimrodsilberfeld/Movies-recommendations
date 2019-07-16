@@ -6,3 +6,8 @@ const loadPage = async function () {
       const r = movieManager.movieData
       await rednerer.renderData(r)
 }
+
+$('.login').on('click', function(){
+    const user = $('.user').val()
+    const pass = $('.password').val()
+})
