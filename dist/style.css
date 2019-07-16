@@ -7,6 +7,8 @@ h1{
 margin-left: 1213px;
 }
 
+
+
 .password{
     margin-left: 1213px;     
 }
@@ -23,5 +25,7 @@ margin-left: 1213px;
 .image{
     border: 1px solid #999;
 	background-color: #503503;
-	padding: 4px;
+    padding: 4px;
+    
+  
 }

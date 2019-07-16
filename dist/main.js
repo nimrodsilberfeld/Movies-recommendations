@@ -4,7 +4,7 @@ const renderer = new Renderer
 const loadPage = async function () {
     await movieManager.getTrending()
     const r = movieManager.trendingMovies
-    console.log(r)
+    await renderer.renderData(r.slice(0,3))
 }
 
 loadPage()
