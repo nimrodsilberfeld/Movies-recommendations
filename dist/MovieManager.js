@@ -13,54 +13,55 @@ class MovieManager {
         let response = await $.get('http://localhost:3000/movies', function (req, res) {
             return res
         })
-        console.log(response)
-        if (response) {
-
-            for (let r in response) {
-                for (let a of r) {
-                    mv.push(a)
-                    console.log(mv)
-
-                }
-            }
+        const res2=response.results
+        for(let a of res2){
+            mv.push( {name: a.title, img: `https://image.tmdb.org/t/p/w300${a.poster_path}`} )
+            
         }
-
-
+        
+        console.log(mv.slice(0,3))
+     
     }
 
 
-    // const UserSchema = new Schema({
-    //     name: String,
-    //     password: Date,
-    //     apiKey: Number,
-    //     movies: [],
-    // })
-
-    async getMovie(movie) {
-        let Data = this.movieData
-        let data = await $.get(`http://localhost:3000/movies/${movie}`)
 
 
-        let MovieObject = {
-            name: data.Title,
-            img: data.Poster
 
-        }
-        Data.push(MovieObject)
+
+
+        
+        
         
 
+async getMovie(movie) {
+    let Data = this.movieData
+    let data = await $.get(`http://localhost:3000/movies/${movie}`)
+
+
+    let MovieObject = {
+        name: data.Title,
+        img: data.Poster
 
     }
+    Data.push(MovieObject)
+    // console.log(Data)
 
-    saveMovie(movieName) {
-        const movies = this.movieData.find(mv => mv.name === movieName)
-        $.post("/movie/", movies)
-    }
+ 
+}
+
+saveUser(user) {
+    $.post(`/user/${user}`, {name: user, movies:[]}, function(data, status){
+         
+    })
+}
 
 
-
-
+saveMovie(movies){
+    
+}
 
 
 
 }
+
+
