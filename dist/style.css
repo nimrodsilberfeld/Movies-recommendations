@@ -1,30 +1,31 @@
-
 body {
-    background-color: lightskyblue;
+    background-color:#1e272e;
 }
 
 #trendingContainer {
     float: left;
     padding: 2px;
     margin: 20px;
-    background: goldenrod;
+    background:#ff5e57; 
     border: 3px rgb(122, 61, 4);
     border-radius: 15px;
     width: 315px;
     text-align: center;
     position: relative;
+    
+    
 }
 
 #suggestionContainer {
     float: right;
     padding: 2px;
     margin: 20px;
-    background: goldenrod;
-    border: 3px solid rgb(122, 61, 4);
+    background:#ff5e57;
+    border: 3px #ff5e57(122, 61, 4);
     border-radius: 15px;
     width: 315px;
     text-align: center;
-   position: relative;
+    position: relative;
 }
 
 .searchMovie {
@@ -53,9 +54,12 @@ h1 {
 }
 
 .image {
+    opacity: 1;
     border: 1px solid #999;
-    background-color: #503503;
+    background-color:#ff5e57;
     padding: 4px;
+    transition: .5s ease;
+    backface-visibility: hidden;
 }
 
 :hover.image {
@@ -64,13 +68,13 @@ h1 {
 
 #trendingContainer:hover .middle {
     opacity: 1;
-  }
+}
 
 #suggestionContainer:hover .middle {
     opacity: 1;
-  }
+}
 
-  .movieId {
+.movieId {
     visibility: hidden;
 }
 
@@ -78,15 +82,27 @@ h1 {
     transition: .1s ease;
     opacity: 0;
     position: absolute;
-    top: 60%;
+    top: 55%;
     left: 50%;
     transform: translate(-50%, -50%);
     -ms-transform: translate(-50%, -50%);
-    text-align: center;
-  }
-  
-  .text{
-    font-style: italic;
+    text-align: initial;
     
+}
 
-  }
+.dateOfRelease {
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    background-color: black;
+     
+    color: linen;
+    font-size: 16px;
+    padding: 16px 32px;
+    
+}
+
+.description {
+    background-color: black;
+    color: linen;
+    width: 250px;
+   height: 250px; 
+}
