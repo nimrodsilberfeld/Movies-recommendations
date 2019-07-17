@@ -22,11 +22,14 @@ $('.search').on('click', async function () {
 
  $('.login').on('click', function(){
     const login = $('.user').val()
+    const pass = $('.password').val()
     movieManager.saveUser(login)
 })
 
 $('body').on('click', '.like', function () {
     let movieName = $(this).siblings('.name').text()
     let movieImg = $(this).siblings('.img').text()
-    movieManager.saveMovie()
+    let login = $('.user').val()
+    let like = true
+    movieManager.saveMovie({name: movieName, img: movieImg, like: like}, login)
 })
