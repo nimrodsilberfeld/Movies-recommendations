@@ -6,8 +6,9 @@ body{
         float: left;
         padding: 2px;
         margin: 20px;
-        background: #666;
-        border: 5px solid rgb(122, 61, 4);
+        background: goldenrod;
+        border: 3px rgb(122, 61, 4);
+        border-radius: 15px;
         width: 315px;
         text-align: center;
         
@@ -17,15 +18,18 @@ body{
 	float: right;
 	padding: 2px;
 	margin: 20px;
-	background: #666;
+	background: goldenrod;
 	border: 3px solid rgb(122, 61, 4); 
+    border-radius:15px;
     width: 315px;
     text-align: center;
 }
 
 .searchMovie{
-    border: 1px solid black;
-    font-family: "Courier New", Courier, monospace
+    font-family: "Courier New", Courier, monospace;
+    border-radius:15px;
+    border-color: black;
+    border-style: solid;
 }
 h1{
     text-align: center;
