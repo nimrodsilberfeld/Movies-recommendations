@@ -15,6 +15,7 @@
         <p>Enter a movie name:</p>
         <input class="movieName" type="text" placeholder="Movie name">
         <button class="search">Search</button>
+        <button class='list'>Favorites</button>
         <input class="user" type="text" placeholder="Username">
         <br><br>
         <input class="password" type="password" placeholder="Password">
@@ -27,13 +28,17 @@
                 <p class= "movieId">{{id}}</p>
                 <h2 class='name'>{{name}}</h2>
                 <img class="image" src="{{img}}">
-                <br><br>
-                <button class= 'like'>Like</button>
+                 <div class="middle"> 
+                    <div class="text">John Doe</div>
+                    <br><br>
+                    </div>
+                     
+                    <button class= 'like'>Like</button>
                 <button class= 'dislike'>Dislike</button>
             </div>
             {{/each}}
              </script>
-             <script id='templateseg' type='text/x-handlebars-template'>
+    <script id='templateseg' type='text/x-handlebars-template'>
                 {{#each data}}
                 <div class= 'searchMovie'>
                     <p class= "movieId">{{id}}</p>
@@ -47,9 +52,9 @@
                  </script>
 
     <div id="trendingContainer"></div>
-    <div id = "suggestionContainer"></div>
-    
-    
+    <div id="suggestionContainer"></div>
+
+
 
 
     <script src="https://code.jquery.com/jquery-3.4.1.js"></script>

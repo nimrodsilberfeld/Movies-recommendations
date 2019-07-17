@@ -79,10 +79,16 @@ router.put('/user/:username', function (req, res) {
 router.get('/user/:username', function (req, res) {
     let name = req.params.username
     User.findOne({ name: name }, function (err, x) {
-        let arr = x.movies.filter(m => m.liked == true)
+        let arr = x.movies.filter(m => m.like === "true")
         res.send(arr)
     })
 })
 
+router.get('/topmovies',function(req,res){
+    request(`https://api.themoviedb.org/3/movie/top_rated?api_key=${key}&language=en-US&page=1`,function(err,r,body){
+        const data=JSON.parse(body)
+        res.send(data.results)
+    })
+})
 
 module.exports = router

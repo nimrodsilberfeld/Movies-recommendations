@@ -46,6 +46,13 @@ $('body').on('click', '.dislike', async function () {
     let login = $('.user').val()
     let like = false
     const id = $(this).siblings('.movieId').text()
-    movieManager.saveMovie({ name: movieName, id: id, img: movieImg, like: like }, login)
+    movieManager.saveMovie({name: movieName, id: id,img: movieImg, like: like} ,login)
 })
 
+$('body').on('click','.list',async function(){
+    $('.searchMovie').empty()
+    movieManager.favoraitemovies.splice(0,movieManager.favoraitemovies.length)
+    const login = $('.user').val()
+   let m=await movieManager.showlikedmovies(login)
+    renderer.renderSuggestion(movieManager.favoraitemovies)
+})

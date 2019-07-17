@@ -2,6 +2,7 @@ class MovieManager {
     constructor() {
         this.trendingMovies = []
         this.movieData = []
+        this.favoraitemovies=[]
 
     }
 
@@ -68,6 +69,16 @@ class MovieManager {
         })
         }
         return newMovies
+    }
+
+
+  async  showlikedmovies(user){
+     let a=await  $.get(`http://localhost:3000/user/${user}`,function(res){  
+           
+        return res
+        })
+       a.forEach(x =>  this.favoraitemovies.push(x))
+        
     }
 
 
