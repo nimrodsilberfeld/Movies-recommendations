@@ -57,6 +57,7 @@ class MovieManager {
         })
         return lst
     }
+    // adjust the movies array to the render
     cutMovies(movies) {
         let newMovies = []
         for (let movie of movies) {

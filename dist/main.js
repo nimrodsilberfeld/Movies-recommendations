@@ -46,8 +46,5 @@ $('body').on('click', '.dislike',async function () {
     let login = $('.user').val()
     let like = false
     const id = $(this).siblings('.movieId').text()
-    let l = await  movieManager.saveMovie({name: movieName, id: id,img: movieImg, like: like} ,login)
-    console.log(l)
-    console.log("main")
-    renderer.renderSuggestion(l)
+    movieManager.saveMovie({name: movieName, id: id,img: movieImg, like: like} ,login)
 })
