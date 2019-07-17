@@ -31,7 +31,11 @@ router.get('/movies/:moviename', function (req, res) {
     let name = req.params.moviename
     request(`http://www.omdbapi.com/?apikey=${namekey}&t=${name}`, function (err, r, Body) {
         const imdb = JSON.parse(Body)
-        res.send(imdb)
+        
+        request(`https://api.themoviedb.org/3/find/${imdb.imdbID}?api_key=${key}&language=en-US&external_source=imdb_id`, function (err, r, body) {
+            const data = JSON.parse(body)
+            res.send(data)
+      })
     })
 })
 
@@ -85,6 +89,19 @@ router.put('/user/:username', function (req, res) {
     User.findOneAndUpdate({ name: user }, { $push: { movies: moviedata}  },{new: true}, function (err, x) {
         res.send(x)
     })
+    request(`https://api.themoviedb.org/3/movie/${moviedata.id}/similar?api_key=${key}&language=en-US&page=1`, function (err, r, body) {
+            const movies = JSON.parse(body)
+            User.findOne({name: user},function(err,d){
+            let list =  sort(movies.results, d.recommendedMovies.results)
+            d.recommendedMovies = list
+            d.save(function(err){
+                if(err){
+                    console.log(err)
+                }
+            })
+            res.send(list)
+            })
+            })
 
 })
 
