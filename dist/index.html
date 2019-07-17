@@ -27,19 +27,23 @@
             <div class= 'searchMovie'>
                 <p class= "movieId">{{id}}</p>
                 <h2 class='name'>{{name}}</h2>
-                <img class="image" src="{{img}}">
-                <br><br>
+                        <img class="image" src="{{img}}">
+                        <p class= "dateOfRelease">Date of release:{{year}}</p>
+                        <p class= "description">{{description}}</p>
+                         <br><br>
                 <button class= 'like'>Like</button>
                 <button class= 'dislike'>Dislike</button>
             </div>
             {{/each}}
              </script>
-             <script id='templateseg' type='text/x-handlebars-template'>
+    <script id='templateseg' type='text/x-handlebars-template'>
                 {{#each data}}
                 <div class= 'searchMovie'>
                     <p class= "movieId">{{id}}</p>
                     <h2 class='name'>{{name}}</h2>
                     <img class="image" src="{{img}}">
+                    <p class= "dateOfRelease">Date of release:{{year}}</p>
+                    <p class= "description">{{description}}</p>
                     <br><br>
                     <button class= 'like'>Like</button>
                     <button class= 'dislike'>Dislike</button>
@@ -48,7 +52,7 @@
                  </script>
 
     <div id="trendingContainer"></div>
-    <div id = "suggestionContainer"></div>
+    <div id="suggestionContainer"></div>
 
 
 
