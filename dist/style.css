@@ -6,7 +6,7 @@ body {
     float: left;
     padding: 2px;
     margin: 20px;
-    background:#ff5e57; 
+    background:#eb2f06; 
     border: 3px rgb(122, 61, 4);
     border-radius: 15px;
     width: 315px;
@@ -105,4 +105,9 @@ h1 {
     color: linen;
     width: 250px;
    height: 250px; 
+}
+
+
+p{
+    color:#f5f6fa; 
 }
