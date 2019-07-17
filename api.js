@@ -35,8 +35,9 @@ router.get('/movies/:moviename', function (req, res) {
     })
 })
 
+
 // takes user name and an object {name: "user name"}
-// 
+// retuns an sorted list of recommended movies
 router.put('/movies/:imdbid', function (req, res) {
     let imdbid = req.params.imdbid
     let user=req.body
@@ -82,6 +83,14 @@ router.put('/user/:username', function (req, res) {
     const moviedata = req.body
     User.findOneAndUpdate({ name: user }, { $set: { movies: moviedata } }, function (err, x) {
         res.send(x)
+    })
+})
+
+router.get('/user/:username',function(req,res){
+    let name=req.params.username
+    User.findOne({ name: name },function(err,x){
+      let arr=  x.movies.filter(m=> m.liked==true)
+        res.send(arr)
     })
 })
 
