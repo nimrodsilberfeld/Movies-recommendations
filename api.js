@@ -55,35 +55,71 @@ router.post('/user/:username', function (req, res) {
 router.put('/user/:username', function (req, res) {
     const user = req.params.username
     const moviedata = req.body
+    User.findOne({ name: user }, function (err, x) {
+        if (x.movies[0] == null){
+            x.movies.push(moviedata)
+            x.save()
+        }
+        else{
+            let checkin = true
+            for(movie of x.movies){
+                if (movie.name == moviedata.name){
+                    checkin = false
+                    break
+                }
+            }
+            if(checkin){
+                x.movies.push(moviedata)
+            }
 
-    User.findOneAndUpdate({ name: user }, { $push: { movies: moviedata } }, { new: true }, function (err, x) {
-
+        }
     })
     request(`https://api.themoviedb.org/3/movie/${moviedata.id}/similar?api_key=${key}&language=en-US&page=1`, function (err, r, body) {
         const movies = JSON.parse(body)
-        
         User.findOne({ name: user }, function (err, d) {
-            let list = sort(movies.results, d.recommendedMovies)
-            let newlist=[]
-           if(d.recommendedMovies[0]===undefined){
-               d.recommendedMovies=list
-               res.send(list) 
-            }
-           else{
-               for (let i of list){
-                   for (let t of d.recommendedMovies){
-                       if(i.title!==t.title){
-                           newlist.push(i)
-                           d.recommendedMovies=newlist
-                           res.send(newlist)
-                           
+            let i = 0
+            while(i<movies.length || i<d.recommendedMovies.length){
+                if(movies[i] != undefined){
+                    if (movies[i].name == moviedata.name ){ //if 1
+                        movies.splice(i,1)
+                        console.log("if 1")
+                    }
+                    else{
+                        for(film of d.movies){
+                            if (film.name == movies[i].name){
+                                movies.splice(i,1)
+                            }
                         }
-                   }
-               }
-           
-            
+                    }
+                }
+                    if (d.recommendedMovies[i] != undefined){
+                        if(d.recommendedMovies[i] == moviedata.name){
+                            d.recommendedMovies.splice(i,1)
+                        }
+                        else{
+                            for(film of d.movies){
+                                if (film.name == d.recommendedMovies[i].name){
+                                    d.recommendedMovies.splice(i,1)
+                                }
+                        }
+                    }
+                }
+                    i++
             }
-            
+            if (movies.results[0] == undefined){
+                d.save(function(err){
+                    console.log(err)
+                })
+                res.send(d.recommendedMovies)
+            }
+            else{
+                let list = sort(movies.results, d.recommendedMovies)
+                   d.recommendedMovies = list
+                   d.save(function(err){
+                       console.log(err)
+                   })
+                   res.send(list) 
+            }
            
         })
     })
