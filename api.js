@@ -33,7 +33,7 @@ router.get('/movies/:moviename', function (req, res) {
 })
 
 
-//save the user in the DB
+//save user into the db
 router.post('/user/:username', function (req, res) {
     const data = req.body
     let user = req.params.username
@@ -61,8 +61,10 @@ router.put('/user/:username', function (req, res) {
     })
     request(`https://api.themoviedb.org/3/movie/${moviedata.id}/similar?api_key=${key}&language=en-US&page=1`, function (err, r, body) {
         const movies = JSON.parse(body)
+        
         User.findOne({ name: user }, function (err, d) {
-            let list = sort(movies.results, d.recommendedMovies.results)
+            let list = sort(movies.results, d.recommendedMovies)
+            console.log(list.length)
             d.recommendedMovies = list
             d.save(function (err) {
                 if (err) {
