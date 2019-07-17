@@ -16,16 +16,6 @@ router.get('/movies', function (req, res) {
     })
 })
 
-//router.get('/user/:username',function(req,res){
-//let user=req.params.username
-//  User.find({},function(err,data){
-//  if(data.username===user){
-//      res.json(data)
-//  }else{
-//     res.send(err)
-// }
-// })
-//})
 
 router.get('/movies/:moviename', function (req, res) {
     let name = req.params.moviename
