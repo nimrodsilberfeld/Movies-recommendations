@@ -87,7 +87,7 @@ router.put('/user/:username', function (req, res) {
     const moviedata = req.body
     
     User.findOneAndUpdate({ name: user }, { $push: { movies: moviedata}  },{new: true}, function (err, x) {
-        res.send(x)
+        
     })
     request(`https://api.themoviedb.org/3/movie/${moviedata.id}/similar?api_key=${key}&language=en-US&page=1`, function (err, r, body) {
             const movies = JSON.parse(body)
