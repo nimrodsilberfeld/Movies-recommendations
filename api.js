@@ -36,18 +36,21 @@ router.get('/movies/:moviename', function (req, res) {
 })
 
 
-router.put('/movies', function (req, res) {
-
+router.put('/movies/:moviename', function (req, res) {
+    let name = req.params.moviename
     let user=req.body
-    request(`https://api.themoviedb.org/3/find/${user.imdbid}?api_key=${key}&language=en-US&external_source=imdb_id`, function (err, r, body) {
+    request(`http://www.omdbapi.com/?apikey=${namekey}&t=${name}`, function (err, r, Body) {
+        const imdb = JSON.parse(Body)
+    
+    request(`https://api.themoviedb.org/3/find/${imdb.imdbID}?api_key=${key}&language=en-US&external_source=imdb_id`, function (err, r, body) {
         const data = JSON.parse(body)
         const id = data.movie_results[0].id
         // res.sendStatus(data.movie_results[0].id)
-        request(`https://api.themoviedb.org/3/movie/${id}/similar?api_key=${key}&language=en-US&page=1`, function (err, r, body) {
-            const movies = JSON.parse(body)
-            res.send(movies)
-            User.findOne({name:user.name},function(err,d){
-            let list=  sort(d.movies,d.recommendedMovies)
+        request(`https://api.themoviedb.org/3/movie/${id}/similar?api_key=${key}&language=en-US&page=1`, function (err, r, b) {
+            const movies = JSON.parse(b)
+          
+            User.findOne({name:user.name},function(err,d){ 
+            let list=  sort(movies.results,d.recommendedMovies[0].results)
             
             User.update({name:user.name},{$set:{recommendedMovies:list}},function(err,x){
                 res.send(list)
@@ -55,6 +58,7 @@ router.put('/movies', function (req, res) {
             })
         })
     })
+})
 })
 
 router.post('/user/:username', function (req, res) {
