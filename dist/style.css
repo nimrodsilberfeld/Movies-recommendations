@@ -29,3 +29,7 @@ margin-left: 1213px;
     
   
 }
+
+.movieId{
+    visibility: hidden;
+}

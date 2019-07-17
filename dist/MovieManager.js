@@ -2,7 +2,7 @@ class MovieManager {
     constructor() {
         this.trendingMovies = []
         this.movieData = []
-        
+
     }
 
     async getTrending() {
@@ -16,7 +16,7 @@ class MovieManager {
         })
         const res2 = response.results
         for (let a of res2) {
-            mv.push({ name: a.title, img: `https://image.tmdb.org/t/p/w300${a.poster_path}` })
+            mv.push({ name: a.title, img: `https://image.tmdb.org/t/p/w300${a.poster_path}`, id: a.id })
 
         }
 
@@ -26,48 +26,41 @@ class MovieManager {
 
 
 
-
-
-
-
-
-
-
-
     async getMovie(movie) {
         let Data = this.movieData
-        let data = await $.get(`http://localhost:3000/movies/${movie}`)
+        let data = await $.get(`http://localhost:3000/movies/${movie}`, function (req, res) {
+            return res
+        })
+        let res = data.movie_results[0]
 
 
-        let MovieObject = {
-            name: data.Title,
-            img: data.Poster
+        Data.push({ name: res.title, img: `https://image.tmdb.org/t/p/w300${res.poster_path}`, id: res.id })
 
-        }
-        Data.push(MovieObject)
+
+
         // console.log(Data)
 
 
     }
 
     saveUser(user) {
-        $.post(`/user/${user}`, { name: user, movies: []}, function (data, status) {
+        $.post(`/user/${user}`, { name: user, movies: [] }, function (data, status) {
 
         })
     }
 
 
-    saveMovie( movieinfo,user) {
-         //  this.likeData.push(movies)
-           $.ajax({
-               method: "PUT",
-               url: `http://localhost:3000/user/${user}`,
-               data:   movieinfo,
-               success: function(data){
-                   
-                       console.log(data)
-               }
-           })
+    saveMovie(movieinfo, user) {
+        //  this.likeData.push(movies)
+        $.ajax({
+            method: "PUT",
+            url: `http://localhost:3000/user/${user}`,
+            data: movieinfo,
+            success: function (data) {
+
+                console.log(data)
+            }
+        })
     }
 
 
