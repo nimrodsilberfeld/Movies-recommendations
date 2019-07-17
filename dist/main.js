@@ -30,9 +30,11 @@ $('body').on('click', '.like', async function () {
     let movieName = $(this).siblings('.name').text()
     let movieImg = $(this).siblings('.image').prop('src')
     let login = $('.user').val()
+    let year = $(this).siblings('.middle').children('.dateOfRelease').text()
+    let description = $(this).siblings('.middle').children('.description').text()
     let like = true
     const id = $(this).siblings('.movieId').text()
-    let l = await movieManager.saveMovie({ name: movieName, id: id, img: movieImg, like: like }, login)
+    let l = await movieManager.saveMovie({name: movieName, id: id,img: movieImg, like: like, year: year, description: description} ,login)
     console.log(l)
     l = movieManager.cutMovies(l)
     console.log(l)
@@ -43,10 +45,12 @@ $('body').on('click', '.like', async function () {
 $('body').on('click', '.dislike', async function () {
     let movieName = $(this).siblings('.name').text()
     let movieImg = $(this).siblings('.image').prop('src')
+    let year = $(this).siblings('.middle').children('.dateOfRelease').text()
+    let description = $(this).siblings('.middle').children('.description').text()
     let login = $('.user').val()
     let like = false
     const id = $(this).siblings('.movieId').text()
-    movieManager.saveMovie({name: movieName, id: id,img: movieImg, like: like} ,login)
+    movieManager.saveMovie({name: movieName, id: id,img: movieImg, like: like, year: year, description: description} ,login)
 })
 
 $('body').on('click','.list',async function(){

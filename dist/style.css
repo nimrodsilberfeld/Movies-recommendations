@@ -24,6 +24,7 @@ body {
     border-radius: 15px;
     width: 315px;
     text-align: center;
+   position: relative;
 }
 
 .searchMovie {
@@ -64,7 +65,12 @@ h1 {
 #trendingContainer:hover .middle {
     opacity: 1;
   }
-.movieId {
+
+#suggestionContainer:hover .middle {
+    opacity: 1;
+  }
+
+  .movieId {
     visibility: hidden;
 }
 
@@ -72,7 +78,7 @@ h1 {
     transition: .1s ease;
     opacity: 0;
     position: absolute;
-    top: 50%;
+    top: 60%;
     left: 50%;
     transform: translate(-50%, -50%);
     -ms-transform: translate(-50%, -50%);
@@ -81,4 +87,6 @@ h1 {
   
   .text{
     font-style: italic;
+    
+
   }
