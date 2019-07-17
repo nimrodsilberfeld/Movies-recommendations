@@ -2,7 +2,7 @@ class MovieManager {
     constructor() {
         this.trendingMovies = []
         this.movieData = []
-        this.likeData = []
+        
     }
 
     async getTrending() {
@@ -57,13 +57,14 @@ class MovieManager {
     }
 
 
-    saveMovie(movies, user) {
-           this.likeData.push(movies)
+    saveMovie( movieinfo,user) {
+         //  this.likeData.push(movies)
            $.ajax({
                method: "PUT",
                url: `http://localhost:3000/user/${user}`,
-               data: JSON.parse(this.likeData),
+               data:   movieinfo,
                success: function(data){
+                   
                        console.log(data)
                }
            })

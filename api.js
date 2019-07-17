@@ -80,9 +80,11 @@ router.post('/user/:username', function (req, res) {
 router.put('/user/:username', function (req, res) {
     const user = req.params.username
     const moviedata = req.body
-    User.findOneAndUpdate({ name: user }, { $set: { movies: moviedata } }, function (err, x) {
+    
+    User.findOneAndUpdate({ name: user }, { $push: { movies: moviedata}  },{new: true}, function (err, x) {
         res.send(x)
     })
+
 })
 
 router.get('/user/:username',function(req,res){
