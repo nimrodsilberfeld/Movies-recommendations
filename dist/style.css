@@ -1,64 +1,92 @@
-body{
+
+body {
     background-color: lightskyblue;
 }
 
-#trendingContainer{
-        float: left;
-        padding: 2px;
-        margin: 20px;
-        background: goldenrod;
-        border: 3px rgb(122, 61, 4);
-        border-radius: 15px;
-        width: 315px;
-        text-align: center;
-        
+#trendingContainer {
+    float: left;
+    padding: 2px;
+    margin: 20px;
+    background: goldenrod;
+    border: 3px rgb(122, 61, 4);
+    border-radius: 15px;
+    width: 315px;
+    text-align: center;
+    position: relative;
 }
 
 #suggestionContainer {
-	float: right;
-	padding: 2px;
-	margin: 20px;
-	background: goldenrod;
-	border: 3px solid rgb(122, 61, 4); 
-    border-radius:15px;
+    float: right;
+    padding: 2px;
+    margin: 20px;
+    background: goldenrod;
+    border: 3px solid rgb(122, 61, 4);
+    border-radius: 15px;
     width: 315px;
     text-align: center;
+   position: relative;
 }
 
-.searchMovie{
+.searchMovie {
     font-family: "Courier New", Courier, monospace;
-    border-radius:15px;
+    border-radius: 15px;
     border-color: black;
     border-style: solid;
+    position: relative;
 }
-h1{
+
+h1 {
     text-align: center;
     text-decoration: underline;
 }
 
-.user{
-margin-left: 1213px;
+.user {
+    margin-left: 1213px;
 }
 
-
-
-.password{
-    margin-left: 1213px;     
+.password {
+    margin-left: 1213px;
 }
 
-.login{
+.login {
     margin-left: 1305px;
 }
 
-
-.image{
+.image {
     border: 1px solid #999;
-	background-color: #503503;
+    background-color: #503503;
     padding: 4px;
-    
-  
 }
 
-.movieId{
+:hover.image {
+    opacity: 0.3;
+}
+
+#trendingContainer:hover .middle {
+    opacity: 1;
+  }
+
+#suggestionContainer:hover .middle {
+    opacity: 1;
+  }
+
+  .movieId {
     visibility: hidden;
 }
+
+.middle {
+    transition: .1s ease;
+    opacity: 0;
+    position: absolute;
+    top: 60%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    -ms-transform: translate(-50%, -50%);
+    text-align: center;
+  }
+  
+  .text{
+    font-style: italic;
+    
+
+  }
