@@ -3,16 +3,18 @@ body {
 }
 
 #trendingContainer {
+    display: grid;
     float: left;
     padding: 2px;
     margin: 20px;
-    background:#eb2f06; 
+    
     border: 3px rgb(122, 61, 4);
     border-radius: 15px;
     width: 315px;
     text-align: center;
     position: relative;
-    
+    grid-column-gap: 10px;
+    grid-row-gap: 15px;
     
 }
 
@@ -20,7 +22,6 @@ body {
     float: right;
     padding: 2px;
     margin: 20px;
-    background:#ff5e57;
     border: 3px #ff5e57(122, 61, 4);
     border-radius: 15px;
     width: 315px;
@@ -34,6 +35,8 @@ body {
     border-color: black;
     border-style: solid;
     position: relative;
+    background:#eb2f06;
+     
 }
 
 h1 {
@@ -56,22 +59,25 @@ h1 {
 .image {
     opacity: 1;
     border: 1px solid #999;
-    background-color:#ff5e57;
     padding: 4px;
     transition: .5s ease;
     backface-visibility: hidden;
 }
 
-:hover.image {
-    opacity: 0.3;
-}
-
 #trendingContainer:hover .middle {
     opacity: 1;
+    
 }
+#trendingContainer:hover .image {
+opacity: 0.3;
 
+}
 #suggestionContainer:hover .middle {
     opacity: 1;
+}
+
+#suggestionContainer:hover .image {
+    opacity: 0.3;
 }
 
 .movieId {
@@ -79,7 +85,7 @@ h1 {
 }
 
 .middle {
-    transition: .1s ease;
+    transition: 1s ease;
     opacity: 0;
     position: absolute;
     top: 55%;
@@ -92,7 +98,7 @@ h1 {
 
 .dateOfRelease {
     font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-    background-color: black;
+    background-color: gray;
      
     color: linen;
     font-size: 16px;
@@ -101,7 +107,7 @@ h1 {
 }
 
 .description {
-    background-color: black;
+    background-color: gray;
     color: linen;
     width: 250px;
    height: 250px; 
