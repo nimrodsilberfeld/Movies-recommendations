@@ -1,3 +1,28 @@
+#trendingContainer{
+        float: left;
+        padding: 2px;
+        margin: 20px;
+        background: #666;
+        border: 5px solid rgb(122, 61, 4);
+        width: 315px;
+        text-align: center;
+        
+}
+
+#suggestionContainer {
+	float: right;
+	padding: 2px;
+	margin: 20px;
+	background: #666;
+	border: 3px solid rgb(122, 61, 4); 
+    width: 315px;
+    text-align: center;
+}
+
+.searchMovie{
+    border: 1px solid black;
+    font-family: "Courier New", Courier, monospace
+}
 h1{
     text-align: center;
     text-decoration: underline;
@@ -17,11 +42,7 @@ margin-left: 1213px;
     margin-left: 1305px;
 }
 
-.con {
-    display: grid;
-    grid-template-rows: 1fr;
-    grid-template-columns: 1fr 
-}
+
 .image{
     border: 1px solid #999;
 	background-color: #503503;
