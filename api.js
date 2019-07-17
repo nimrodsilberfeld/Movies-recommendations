@@ -4,7 +4,7 @@ const mongoose = require('mongoose')
 const router = express.Router()
 const request = require('request')
 const User = require('./modules/User')
-const sort=require('./modules/Recommend')
+const sort = require('./modules/Recommend')
 
 const key = 'f879f4132d8f332d5be23dee1d085d9f'
 const namekey = 'b6c343c7'
@@ -36,30 +36,31 @@ router.get('/movies/:moviename', function (req, res) {
 })
 
 
-router.put('/movies/:moviename', function (req, res) {
-    let name = req.params.moviename
+// takes user name and an object {name: "user name"}
+// retuns an sorted list of recommended movies
+router.put('/movies/:imdbid', function (req, res) {
+    let imdbid = req.params.imdbid
     let user=req.body
-    request(`http://www.omdbapi.com/?apikey=${namekey}&t=${name}`, function (err, r, Body) {
-        const imdb = JSON.parse(Body)
-    
-    request(`https://api.themoviedb.org/3/find/${imdb.imdbID}?api_key=${key}&language=en-US&external_source=imdb_id`, function (err, r, body) {
+    request(`https://api.themoviedb.org/3/find/${imdbid}?api_key=${key}&language=en-US&external_source=imdb_id`, function (err, r, body) {
         const data = JSON.parse(body)
         const id = data.movie_results[0].id
-        // res.sendStatus(data.movie_results[0].id)
-        request(`https://api.themoviedb.org/3/movie/${id}/similar?api_key=${key}&language=en-US&page=1`, function (err, r, b) {
-            const movies = JSON.parse(b)
-          
-            User.findOne({name:user.name},function(err,d){ 
-            let list=  sort(movies.results,d.recommendedMovies[0].results)
-            
-            User.update({name:user.name},{$set:{recommendedMovies:list}},function(err,x){
-                res.send(list)
+
+        request(`https://api.themoviedb.org/3/movie/${id}/similar?api_key=${key}&language=en-US&page=1`, function (err, r, body) {
+            const movies = JSON.parse(body)
+            User.findOne({name: user.name},function(err,d){
+            let list =  sort(movies.results, d.recommendedMovies.results)
+            d.recommendedMovies = list
+            d.save(function(err){
+                if(err){
+                    console.log(err)
+                }
+            })
+            res.send(list)
             })
             })
         })
     })
-})
-})
+
 
 router.post('/user/:username', function (req, res) {
     const data = req.body

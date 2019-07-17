@@ -16,3 +16,12 @@ const UserSchema = new Schema({
 const User = mongoose.model("User", UserSchema)
 
 module.exports = User
+
+// const u1 = new User({
+//     name: "david",
+//     password: "david",
+//     apiKey: "skcbsjkc",
+//     movies: [],
+//     recommendedMovies: []
+// })
+// u1.save()
