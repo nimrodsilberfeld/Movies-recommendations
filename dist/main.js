@@ -4,7 +4,7 @@ const renderer = new Renderer
 const loadPage = async function () {
     await movieManager.getTrending()
     const r = movieManager.trendingMovies
-    await renderer.renderData(r.slice(0,3))
+    await renderer.renderTrending(r.slice(0,3))
 }
 
 loadPage()
@@ -15,7 +15,7 @@ $('.search').on('click', async function () {
     m.splice(0, 1)
     const movie = $('.movieName').val()
     await movieManager.getMovie(movie)
-    await renderer.renderData(m)
+    await renderer.renderTrending(m)
     console.log(m)
 
 })
@@ -26,20 +26,28 @@ $('.search').on('click', async function () {
     movieManager.saveUser(login)
 })
 
-$('body').on('click', '.like', function () {
+$('body').on('click', '.like', async function () {
     let movieName = $(this).siblings('.name').text()
     let movieImg = $(this).siblings('.image').prop('src')
     let login = $('.user').val()
     let like = true
     const id = $(this).siblings('.movieId').text()
-    movieManager.saveMovie({name: movieName, id: id,img: movieImg, like: like} ,login)
+    let l = await movieManager.saveMovie({name: movieName, id: id,img: movieImg, like: like} ,login)
+    console.log(l)
+    l = movieManager.cutMovies(l)
+    console.log(l)
+    console.log("main")
+    renderer.renderSuggestion(l.slice(0,3))
 })
 
-$('body').on('click', '.dislike', function () {
+$('body').on('click', '.dislike',async function () {
     let movieName = $(this).siblings('.name').text()
     let movieImg = $(this).siblings('.image').prop('src')
     let login = $('.user').val()
     let like = false
     const id = $(this).siblings('.movieId').text()
-    movieManager.saveMovie({name: movieName, id: id,img: movieImg, like: like} ,login)
+    let l = await  movieManager.saveMovie({name: movieName, id: id,img: movieImg, like: like} ,login)
+    console.log(l)
+    console.log("main")
+    renderer.renderSuggestion(l)
 })

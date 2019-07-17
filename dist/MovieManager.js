@@ -35,12 +35,6 @@ class MovieManager {
 
 
         Data.push({ name: res.title, img: `https://image.tmdb.org/t/p/w300${res.poster_path}`, id: res.id })
-
-
-
-        // console.log(Data)
-
-
     }
 
     saveUser(user) {
@@ -50,19 +44,30 @@ class MovieManager {
     }
 
 
-    saveMovie(movieinfo, user) {
+    async saveMovie(movieinfo, user) {
         //  this.likeData.push(movies)
-        $.ajax({
+        let lst = await $.ajax({
             method: "PUT",
             url: `http://localhost:3000/user/${user}`,
             data: movieinfo,
             success: function (data) {
-
-                console.log(data)
+                return data
             }
-        })
-    }
 
+        })
+        return lst
+    }
+    cutMovies(movies) {
+        let newMovies = []
+        for (let movie of movies) {
+            newMovies.push({
+                id: movie.id,
+                img: `https://image.tmdb.org/t/p/w300${movie.poster_path}`,
+                name: movie.title
+        })
+        }
+        return newMovies
+    }
 
 
 }

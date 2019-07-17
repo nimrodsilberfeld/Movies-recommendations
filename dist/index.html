@@ -33,14 +33,23 @@
             </div>
             {{/each}}
              </script>
+             <script id='templateseg' type='text/x-handlebars-template'>
+                {{#each data}}
+                <div class= 'searchMovie'>
+                    <p class= "movieId">{{id}}</p>
+                    <h2 class='name'>{{name}}</h2>
+                    <img class="image" src="{{img}}">
+                    <br><br>
+                    <button class= 'like'>Like</button>
+                    <button class= 'dislike'>Dislike</button>
+                </div>
+                {{/each}}
+                 </script>
 
-    <div id="container">
+    <div id="trendingContainer"></div>
+    <div id = "suggestionContainer"></div>
 
 
-
-
-
-    </div>
 
     <script src="https://code.jquery.com/jquery-3.4.1.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/handlebars.js/4.1.2/handlebars.js"></script>
