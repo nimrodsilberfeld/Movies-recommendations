@@ -2,6 +2,7 @@ class MovieManager {
     constructor() {
         this.trendingMovies = []
         this.movieData = []
+        this.favoraitemovies=[]
 
     }
 
@@ -16,7 +17,7 @@ class MovieManager {
         })
         const res2 = response.results
         for (let a of res2) {
-            mv.push({ name: a.title, img: `https://image.tmdb.org/t/p/w300${a.poster_path}`, id: a.id })
+            mv.push({ name: a.title, img: `https://image.tmdb.org/t/p/w300${a.poster_path}`, id: a.id , description: a.overview, year: a.release_date})
 
         }
 
@@ -34,7 +35,7 @@ class MovieManager {
         let res = data.movie_results[0]
 
 
-        Data.push({ name: res.title, img: `https://image.tmdb.org/t/p/w300${res.poster_path}`, id: res.id })
+        Data.push({ name: res.title, img: `https://image.tmdb.org/t/p/w300${res.poster_path}`, id: res.id , description: res.overview, year: res.release_date})
     }
 
     saveUser(user) {
@@ -64,10 +65,22 @@ class MovieManager {
             newMovies.push({
                 id: movie.id,
                 img: `https://image.tmdb.org/t/p/w300${movie.poster_path}`,
-                name: movie.title
+                name: movie.title,
+                year: movie.release_date,
+                description: movie.overview
         })
         }
         return newMovies
+    }
+
+
+  async  showlikedmovies(user){
+     let a=await  $.get(`http://localhost:3000/user/${user}`,function(res){  
+           
+        return res
+        })
+       a.forEach(x =>  this.favoraitemovies.push(x))
+        
     }
 
 
