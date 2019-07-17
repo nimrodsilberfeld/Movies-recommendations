@@ -31,6 +31,16 @@ $('body').on('click', '.like', function () {
     let movieImg = $(this).siblings('.image').prop('src')
     let login = $('.user').val()
     let like = true
+    const id = movieManager.movieData.id
+   
+    movieManager.saveMovie({name: movieName, id: trendingId || id,img: movieImg, like: like} ,login)
+})
+
+$('body').on('click', '.dislike', function () {
+    let movieName = $(this).siblings('.name').text()
+    let movieImg = $(this).siblings('.image').prop('src')
+    let login = $('.user').val()
+    let like = false
    
     movieManager.saveMovie({name: movieName, img: movieImg, like: like} ,login)
 })

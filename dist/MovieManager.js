@@ -16,7 +16,7 @@ class MovieManager {
         })
         const res2 = response.results
         for (let a of res2) {
-            mv.push({ name: a.title, img: `https://image.tmdb.org/t/p/w300${a.poster_path}` })
+            mv.push({ name: a.title, img: `https://image.tmdb.org/t/p/w300${a.poster_path}`, id: a.id })
 
         }
 
@@ -40,8 +40,9 @@ class MovieManager {
 
 
         let MovieObject = {
-            name: data.Title,
+            name: data.title,
             img: data.Poster
+
 
         }
         Data.push(MovieObject)
